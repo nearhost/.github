@@ -17,7 +17,7 @@ Or `brew install nearhost/tap/nearhost`, or `npx @nearhost/cli`. Then run `nearh
 - **One address per project.** `https://myapp.test` today, tomorrow and after a reboot.
 - **Real HTTPS, trusted once.** Secure cookies, OAuth callbacks and service workers behave as they do in production.
 - **Hot reload and WebSockets.** They travel through the same SSH connection.
-- **Nothing on the server.** No agent, no config changes, no open ports. If `ssh <host>` works, Nearhost works.
+- **Nothing installed on the server.** No daemon, no open ports, and nothing written to your project unless you run `nearhost export`. If `ssh <host>` works, Nearhost works.
 - **Any stack.** Nearhost routes ports. It reads `.env` to propose them, presets add Compose and Vite, and you can enter them by hand for anything else.
 - **From your coding agent.** Claude Code, Codex and other agents can propose the project they work in, and you save it in Nearhost.
 - **Nothing leaves your machines.** No relay, no account and no public URL.
