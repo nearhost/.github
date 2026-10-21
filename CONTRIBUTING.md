@@ -16,13 +16,13 @@ Pull requests are squash merged, and the title becomes the commit message. Write
 
 ## Checks
 
-Run the checks for the repository you are changing before you push. CI runs the same ones.
+Run the checks for the repository you are changing before you push. CI runs vet and the tests on macOS and Linux.
 
 | Repository | Setup | Check |
 | --- | --- | --- |
 | [nearhost](https://github.com/nearhost/nearhost) | Git and the Go version in `go.mod` | `go test -race ./...` and `go vet ./...` |
 | [landing](https://github.com/nearhost/landing) | `nvm use`, then `npm install` | `npm run verify` |
-| [presets](https://github.com/nearhost/presets) | Git, Make and Go | `make check` |
+| [presets](https://github.com/nearhost/presets) | Git, Make and Go, then `make install-nearhost` | `make check` |
 
 The README of each repository describes how to build and run it.
 
