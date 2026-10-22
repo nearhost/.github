@@ -6,7 +6,7 @@
 curl -fsSL https://nearhost.dev/install.sh | sh
 ```
 
-Or `brew install nearhost/tap/nearhost`, or `npx @nearhost/cli`. Then run `nearhost`, add a server, add a project, and press `o` to open it. The [quick start](https://nearhost.dev/docs/getting-started/introduction/) covers each step.
+Or `brew install nearhost/tap/nearhost`, or `npx @nearhost/cli`. Then run `nearhost`, add a server, add a project, and press `o` to open it. The [introduction](https://nearhost.dev/docs/getting-started/introduction/) covers each step.
 
 [Website](https://nearhost.dev) · [Docs](https://nearhost.dev/docs/getting-started/introduction/) · [Releases](https://github.com/nearhost/nearhost/releases) · [npm](https://www.npmjs.com/package/@nearhost/cli)
 
