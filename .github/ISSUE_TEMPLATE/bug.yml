@@ -19,7 +19,7 @@ body:
     attributes:
       label: Operating system
       description: Your OS and version, and your CPU architecture if it is unusual.
-      placeholder: macOS 15.1 on Apple silicon, or Ubuntu 24.04
+      placeholder: macOS 15.1 on Apple silicon, Ubuntu 24.04, or Windows 11 24H2
     validations:
       required: true
   - type: dropdown
