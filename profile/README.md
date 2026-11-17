@@ -6,7 +6,7 @@
 curl -fsSL https://nearhost.dev/install.sh | sh
 ```
 
-Or `brew install nearhost/tap/nearhost`, or `npx @nearhost/cli`. Then run `nearhost`, add a server, add a project, and press `o` to open it. The [introduction](https://nearhost.dev/docs/getting-started/introduction/) covers each step.
+Or `brew install nearhost/tap/nearhost`, or `npx @nearhost/cli`. On Windows 11, run `irm https://nearhost.dev/install.ps1 | iex` in PowerShell. Then run `nearhost`, add a server, add a project, and press `o` to open it. The [introduction](https://nearhost.dev/docs/getting-started/introduction/) covers each step.
 
 [Website](https://nearhost.dev) · [Docs](https://nearhost.dev/docs/getting-started/introduction/) · [Releases](https://github.com/nearhost/nearhost/releases) · [npm](https://www.npmjs.com/package/@nearhost/cli)
 
@@ -39,4 +39,4 @@ Read more in the [docs](https://nearhost.dev/docs/).
 | [landing](https://github.com/nearhost/landing) | The website and documentation at [nearhost.dev](https://nearhost.dev). |
 | [homebrew-tap](https://github.com/nearhost/homebrew-tap) | The Homebrew cask. |
 
-Nearhost is open source under the MIT licence, for macOS and Linux.
+Nearhost is open source under the MIT licence, for macOS, Linux and Windows.
