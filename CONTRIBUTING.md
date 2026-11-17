@@ -16,7 +16,7 @@ Pull requests are squash merged, and the title becomes the commit message. Write
 
 ## Checks
 
-Run the checks for the repository you are changing before you push. CI runs vet and the tests on macOS and Linux.
+Run the checks for the repository you are changing before you push. CI runs vet and the tests on macOS, Linux and Windows.
 
 | Repository | Setup | Check |
 | --- | --- | --- |
