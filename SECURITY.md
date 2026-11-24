@@ -19,8 +19,9 @@ Nearhost runs on your machine with some privileges, so these areas matter most:
 - **The local certificate authority.** Its private key, where it is stored, how it is created and trusted, and anything that lets a certificate be issued for a name the user did not add.
 - **sudo and the hosts file.** The commands Nearhost runs through `sudo`, and how it edits the managed block in `/etc/hosts`.
 - **The agent API.** The Unix sockets that coding agents use to propose projects, including who can reach them and what they can make Nearhost do without the user's approval.
+- **The core and its page.** The core's control socket and API, the page at `nearhost.localhost` with its cookie gate and form token, who can reach them, and what a page or client can approve on the user's behalf.
 - **SSH transport.** How Nearhost starts `ssh`, forwards ports and reads `ssh_config`, including command or option injection through host names, paths or project config.
-- **Install paths.** The install script at nearhost.dev, the Homebrew cask, the npm packages, release archives and their checksums, and `nearhost update`.
+- **Install paths.** The install script at nearhost.dev, the Homebrew cask, the npm packages, release archives and their checksums, `nearhost update`, and the login service that `nearhost service install` creates (a launchd agent, systemd user unit or Task Scheduler task).
 
 Presets and `.nearhostrc` files are also in scope where they could do more than propose routes and advice.
 

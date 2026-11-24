@@ -18,6 +18,7 @@ Or `brew install nearhost/tap/nearhost`, or `npx @nearhost/cli`. On Windows 11, 
 - **Real HTTPS, trusted once.** Secure cookies, OAuth callbacks and service workers behave as they do in production.
 - **Hot reload and WebSockets.** They travel through the same SSH connection.
 - **Nothing installed on the server.** No daemon, no open ports, and nothing written to your project unless you run `nearhost export`. If `ssh <host>` works, Nearhost works.
+- **Runs in the background.** `nearhost -d`, or a service that starts at login, keeps your projects served with no terminal open.
 - **Any stack.** Nearhost routes ports. It reads `.env` to propose them, presets add Compose and Vite, and you can enter them by hand for anything else.
 - **From your coding agent.** Claude Code, Codex and other agents can propose the project they work in, and you save it in Nearhost.
 - **Nothing leaves your machines.** No relay, no account and no public URL.

@@ -26,7 +26,7 @@ Run the checks for the repository you are changing before you push. CI runs vet 
 
 The README of each repository describes how to build and run it.
 
-When you run a development build of Nearhost, point it at a scratch config directory with `XDG_CONFIG_HOME` and use `--no-hosts` so it leaves your real config, certificate authority and `/etc/hosts` alone. The tests need no network, Docker or SSH server.
+When you run a development build of Nearhost, point it at scratch directories with `XDG_CONFIG_HOME` and `XDG_DATA_HOME`, and use `--no-hosts` and other `--https-port`, `--http-port` and `--web-port` values. That leaves your real config, certificate authority and `/etc/hosts` alone, and avoids clashing with an installed Nearhost. The Development section of the [nearhost README](https://github.com/nearhost/nearhost#development) has the full commands. The tests need no network, Docker or SSH server.
 
 ## What differs by repository
 
