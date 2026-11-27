@@ -3,7 +3,7 @@
 # its own install command and line beside it. Needs Google Chrome and a
 # checkout of nearhost/landing with dependencies installed, for the fonts, and
 # built (npm run build) for tui.png: $LANDING, by default ~/Code/nearhost/landing.
-# Also needs ImageMagick (magick) to crop tui.png.
+# tui.png is cropped with sharp from that same checkout's node_modules.
 set -eu
 here="$(cd "$(dirname "$0")" && pwd)"
 landing="$(cd "${LANDING:-$HOME/Code/nearhost/landing}" && pwd)"
@@ -12,6 +12,8 @@ if [ -z "${CHROME:-}" ]; then
   if [ -x "$mac_chrome" ]; then CHROME="$mac_chrome"; else CHROME=google-chrome; fi
 fi
 chrome="$CHROME"
+command -v node >/dev/null 2>&1 || { echo "render.sh needs node, to crop tui.png" >&2; exit 1; }
+[ -d "$landing/node_modules/sharp" ] || { echo "render.sh needs sharp in $landing/node_modules (run npm install there)" >&2; exit 1; }
 work="$(mktemp -d "${TMPDIR:-/tmp}/nearhost-render.XXXXXX")"
 preview=""
 cleanup() {
@@ -37,8 +39,8 @@ render header-brew.png 'brew install nearhost/tap/nearhost' "$dev"
 render header-presets.png 'nearhost preset registry add nearhost/presets' 'The official preset registry'
 
 # tui.png: the demo on the built landing page, at twice its size. Chrome cannot
-# screenshot one element from the command line, so take the page and crop to the
-# demo frame, found by the first border-coloured row down the right of the page, clear of the install box.
+# screenshot one element from the command line, so take the whole page and crop
+# to the demo frame, which crop.js measures from its border.
 # astro re-launches itself, so the PID to stop is whatever listens on the port.
 (cd "$landing" && npx astro preview --port 4399 >/dev/null 2>&1 &)
 for _ in $(seq 1 30); do
@@ -48,9 +50,7 @@ done
 preview="$(lsof -ti tcp:4399 -sTCP:LISTEN | head -n1)"
 "$chrome" --headless=new --disable-gpu --hide-scrollbars \
   --user-data-dir="$work/profile-tui" \
-  --force-device-scale-factor=2 --window-size=1280,1800 --virtual-time-budget=8000 \
+  --force-device-scale-factor=2 --window-size=1280,2400 --virtual-time-budget=8000 \
   --screenshot="$work/page.png" http://localhost:4399/ >/dev/null 2>&1
-top="$(magick "$work/page.png" -crop 1x1200+2400+1000 +repage txt:- | grep -m1 '#2F2A33' | sed 's/^0,\([0-9]*\):.*/\1/')"
-[ -n "$top" ] || { echo "could not find the demo frame in the page" >&2; exit 1; }
-magick "$work/page.png" -crop "2304x1598+128+$((top + 1000))" +repage -alpha off "$here/tui.png"
+node "$here/crop-frame.js" "$landing" "$work/page.png" "$here/tui.png"
 echo "wrote $here/tui.png"
