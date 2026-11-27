@@ -40,7 +40,9 @@ render header-presets.png 'nearhost preset registry add nearhost/presets' 'The o
 
 # tui.png: the demo on the built landing page, at twice its size. Chrome cannot
 # screenshot one element from the command line, so take the whole page and crop
-# to the demo frame, which crop.js measures from its border.
+# to the demo frame, which crop-frame.js measures from its border.
+# The frame is about 2300 device px wide in a 1280 px window at 2x; crop-frame.js
+# looks for a run of 2000-2400, so a different window or scale needs that range changed.
 # astro re-launches itself, so the PID to stop is whatever listens on the port.
 (cd "$landing" && npx astro preview --port 4399 >/dev/null 2>&1 &)
 for _ in $(seq 1 30); do
